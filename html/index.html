@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>p554 Tax Guide</title>
+  <style>
+    /* Add a CSS style block to modify the button color */
+    #submitBtn {
+      background-color: lime;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form>
+    <textarea id="textInput" maxlength="150" rows="4" cols="70" name="textInput" oninput="updateCharacterCount()"></textarea>
+<div id="characterCount"></div>
+    <br>
+    <input id="submitBtn" type="button" value="Generate Response" onclick="return validateAndSubmit()">
+  </form>
+
+  <br>
+  <div id="response"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+  function updateCharacterCount() {
+    var textarea = document.getElementById("textInput");
+    var characterCount = document.getElementById("characterCount");
+    characterCount.innerHTML = 150 - textarea.value.length;
+  }
+ </script>
+ <script>
+ function validateAndSubmit() {
+      var textarea = document.getElementById("textInput");
+      var input = textarea.value;
+      var regex = /[,"\\\/#@*|!=]/g;
+      
+      if (regex.test(input)) {
+        alert("Invalid input! The symbols \", \\, #, @, *, |, and ! are not allowed.");
+        return false;
+      }
+
+      submitText(input);
+    }
+  </script>
+ <script>
+
+  function submitText() {
+      var texto = document.getElementById("textInput").value;
+      $.ajax({
+        url: 'https://container-p554-2f7uuagenq-uc.a.run.app/predict',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({"text": texto}),
+        success: function(response) {
+          document.getElementById("response").innerText = response.answer;
+        }
+      });
+    };
+  </script>
+</body>
+</html>
