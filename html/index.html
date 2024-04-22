@@ -4,9 +4,38 @@
 <head>
   <title>Seniors Tax Guide Questions</title>
   <style>
-    /* Add a CSS style block to modify the button color */
+    #textInput {
+      border: none;
+      padding: 10px;
+      height: 20px;
+      width: 500px;
+      border:1px solid #eaeaea;
+      outline:none;
+    }
+    #textInput:hover{
+      border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+    }
+    #textInput:focus{
+      border-color:#4d90fe;
+    }
     #submitBtn {
-      background-color: lime;
+      border-radius: 2px;
+      background: #f2f2f2;
+      border: 1px solid #f2f2f2;
+      color: #757575;
+      cursor: default;
+      font-size: 14px;
+      font-weight: bold;
+      width: 100px;
+      padding: 0 16px;
+      height:36px;
+    }
+    #submitBtn:hover {
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      background: #f8f8f8;
+      border: 1px solid #c6c6c6;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      color: #222;
     }
     #overlay{	
       position: fixed;
@@ -48,7 +77,7 @@
     <textarea id="textInput" maxlength="150" rows="4" cols="70" name="textInput" oninput="updateCharacterCount()"></textarea>
     <div id="characterCount"></div>
     <br>
-    <input id="submitBtn" type="button" value="Generate Response" onclick="return validateAndSubmit()">
+    <input id="submitBtn" type="button" value="Search" onclick="return validateAndSubmit()">
   </form>
 
   <br>
